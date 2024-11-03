@@ -1,0 +1,47 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    // Se especifica el espacio de nombres (namespace) para la aplicación
+    namespace = "com.example.heycap" // Cambia esto según tus necesidades (anuncios o heycap)
+    
+    // Establece la versión del SDK de compilación y la versión NDK
+    compileSdk = flutter.compileSdkVersion // Puedes usar 34 directamente si lo prefieres
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        // Especifica el ID de la aplicación único
+        applicationId = "com.example.heycap" // Cambia esto según tus necesidades (anuncios o heycap)
+        
+        // Actualiza estos valores según las necesidades de tu aplicación
+        minSdk = flutter.minSdkVersion // Puedes usar 21 directamente si lo prefieres
+        targetSdk = flutter.targetSdkVersion // Puedes usar 34 directamente si lo prefieres
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            // Agrega tu propia configuración de firma para la construcción de lanzamiento.
+            // Firmando con las claves de depuración por ahora, para que funcione `flutter run --release`.
+            signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
